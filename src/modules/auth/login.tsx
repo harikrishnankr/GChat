@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogin } from 'react-google-login';
 import { G_AUTH_CLIENT_ID } from '../../config';
 import './login.scss';
-
-// refresh token
 import { refreshTokenSetup } from '../../shared/utils/refresh-token';
+import { connect } from 'react-redux';
+import { login } from '../../store/auth/action';
+import { IStore } from '../../store/types';
+import { AuthStatus, IAuthState } from '../../store/auth/types';
+import { IDispatchProps, LoginDispatcher, LoginProps } from './types';
 
-const Login = () => {
+const Login = (props: LoginProps) => {
     const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-        console.log('Login Success: currentUser:', (res as GoogleLoginResponse));
         refreshTokenSetup(res as GoogleLoginResponse);
+        props.loginUser((res as GoogleLoginResponse ).tokenId)
     };
 
-    const onFailure = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-        console.log('Login failed: res:', res);
+    const onFailure = () => {
+        props.loginUser('');
     };
 
     const { signIn } = useGoogleLogin({
@@ -27,11 +30,20 @@ const Login = () => {
     });
 
     return (
-        <button onClick={signIn} className="button google-button">
-            <div className="google-logo"></div>
-            <span className="buttonText">Sign in with Google</span>
-        </button>
+        <Fragment>
+            { props.authStatus === AuthStatus.LoginError ? 'Login Error' : '' }
+            <button onClick={signIn} className='button google-button'>
+                <div className='google-logo'></div>
+                <span className='buttonText'>Sign in with Google</span>
+            </button>
+        </Fragment>
     );
 }
 
-export default Login;
+const mapStateToProps = (store: IStore): IAuthState => ( { ...store.auth });
+
+const mapDispatchToProps = (dispatch: LoginDispatcher): IDispatchProps => ({
+    loginUser: (token: string) => dispatch(login(token))
+});
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

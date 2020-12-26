@@ -1,6 +1,6 @@
-import React from "react";
-import { Fragment } from "react";
-import Logout from "../auth/logout";
+import React from 'react';
+import { Fragment } from 'react';
+import Logout from '../auth/logout';
 
 const Chat = () => {
     return (
