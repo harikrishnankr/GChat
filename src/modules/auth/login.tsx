@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogin } from 'react-google-login';
 import { G_AUTH_CLIENT_ID } from '../../config';
 import './login.scss';
@@ -30,13 +30,17 @@ const Login = (props: LoginProps) => {
     });
 
     return (
-        <Fragment>
-            { props.authStatus === AuthStatus.LoginError ? 'Login Error' : '' }
-            <button onClick={signIn} className='button google-button'>
-                <div className='google-logo'></div>
-                <span className='buttonText'>Sign in with Google</span>
-            </button>
-        </Fragment>
+        <div className='login-wrapper'>
+            <div>
+                <div className='logo'></div>
+                <h3>Join Our Community</h3>
+                { props.authStatus === AuthStatus.LoginError ? 'Login Error' : '' }
+                <button onClick={signIn} className='button google-button'>
+                    <div className='google-logo'></div>
+                    <span className='buttonText'>Sign in with Google</span>
+                </button>
+            </div>
+        </div>
     );
 }
 

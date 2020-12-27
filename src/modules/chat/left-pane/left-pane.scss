@@ -1,0 +1,79 @@
+.left-pane {
+    width: 322px;
+    height: 100%;
+    border-width: 0px 1px 0px 0px;
+    border-style: solid;
+    border-color: rgb(213, 217, 222);
+    background-color: rgb(241, 241, 244);
+}
+
+.chat-header {
+    height: 52px;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-wrapper {
+    flex: 1;
+    .logo-small {
+        position: relative;
+        height: 40px;
+        width: 40px;
+        background: url('../../../../assets/images/logo.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+.menu {
+    height: 30px;
+    width: 30px;
+    background: url('../../../../assets/images/more.svg') no-repeat center;
+    background-size: 20px;
+    display: inline-block;
+    margin: 3px;
+    padding: 3px;
+    cursor: pointer;
+    &:hover {
+        background-color: #e8e8e8;
+        border-radius: 5px;
+    }
+}
+
+.search-bar {
+    height: 50px;
+    padding: 4px 8px 8px;
+    .search-box {
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+        border-color: rgb(213, 217, 222);
+        border-width: 1px;
+        border-style: solid;
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+    }
+    .search-glass {
+        height: 20px;
+        width: 20px;
+        background: url('../../../../assets/images/search-glass.svg') no-repeat center;
+        background-size: 20px;
+        display: inline-block;
+        margin: 3px;
+        padding: 3px;
+    }
+    .placeholder {
+        font-weight: 400;
+        color: rgb(138, 141, 145);
+        font-size: 12px;
+    }
+}
+
+.recent-messages {
+    height: calc(100% - 120px);
+    overflow: auto;
+}
+

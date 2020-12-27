@@ -1,0 +1,32 @@
+.avatar {
+    position: relative;
+    background: #e5e4e8;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    align-items: center;
+    display: flex;
+    white-space: pre;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: rgb(0, 120, 212);
+    font-weight: 800;
+
+    .indicator {
+        position: absolute;
+        border-width: 2px;
+        width: 11px;
+        height: 11px;
+        border-radius: 8px;
+        bottom: -3px;
+        right: -3px;
+        border: 2px solid #fff;
+        &.online {
+            background: #4dd965;
+        }
+        &.away {
+            background-color: #ffba00;
+        }
+    }
+}

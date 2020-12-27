@@ -1,10 +1,30 @@
+@import "../../variables";
+
 .google-button {
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid $primary;
+    color: $primary;
     .google-logo {
         height: 60px;
         width: 60px;
         background: url('../../../assets/images/google.svg') no-repeat center;
+    }
+}
+
+.login-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+        height: 90px;
+        width: 90px;
+        background: url('../../../assets/images/logo.png') no-repeat center;
+        margin: 0 auto;
+        background-size: 100%;
     }
 }
