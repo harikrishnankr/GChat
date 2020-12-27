@@ -6,7 +6,7 @@ module.exports = {
     output: {
         filename: "./main.js",
         publicPath: '/',
-        path: path.resolve('./dist')
+        path: path.resolve('./')
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx', '.scss']
