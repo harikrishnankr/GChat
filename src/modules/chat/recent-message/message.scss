@@ -1,4 +1,4 @@
-.message {
+.recent-message {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -14,48 +14,48 @@
     &:hover {
         background-color: rgb(234, 234, 234);
     }
-}
-
-.identity {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
-    align-items: flex-start;
-    align-self: stretch;
-    justify-content: center;
-    margin-left: 10px;
-    font-size: 15px;
-    .name {
-        overflow: hidden;
-        padding-right: 6px;
-    }
-    .last-message {
-        color: rgb(138, 141, 145);
-    }
-}
-
-.space-time {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    align-self: stretch;
-    justify-content: center;
-    margin-left: 4px;
-    margin-top: 4px;
-    font-size: 12px;
-    .time {
-        color: rgb(138, 141, 145);
-    }
-    .unread-messages {
-        height: 20px;
-        width: 20px;
-        border-radius: 10px;
-        background-color: #0078d4;
-        color: #fff;
-        font-weight: 600;
+    .identity {
         display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-shrink: 1;
+        align-items: flex-start;
+        align-self: stretch;
         justify-content: center;
-        align-items: center;
+        margin-left: 10px;
+        font-size: 15px;
+        .name {
+            overflow: hidden;
+            padding-right: 6px;
+        }
+        .last-message {
+            color: rgb(138, 141, 145);
+        }
+    }
+    
+    .space-time {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        align-self: stretch;
+        justify-content: center;
+        margin-left: 4px;
+        margin-top: 4px;
+        font-size: 12px;
+        .time {
+            color: rgb(138, 141, 145);
+        }
+        .unread-messages {
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            background-color: #0078d4;
+            color: #fff;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }
+

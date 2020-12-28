@@ -42,4 +42,67 @@
             margin-left: 10px;
         }
     }
+    .chat-inbox {
+        background-color: rgba(0, 0, 0, 0);
+        @media (min-width: 560px) {
+            height: calc(100% - 150px);
+            padding: 0px 30px
+        }
+        .chat-message {
+            padding-top: 10px;
+            display: flex;
+            
+            .message-wrapper {
+                min-height: 30px;
+                margin-left: 5px;
+                .name-and-time {
+                    margin-bottom: 5px;
+                    font-size: 12px;
+                    color: rgb(138, 141, 145);
+                    user-select: text;
+                    cursor: text;
+                }
+            }
+            
+            &.in-coming {
+                padding-right: 36px;
+                @media (min-width: 560px) {
+                    padding-right: 76px;
+                }
+                .message-text {
+                    border-radius: 0px 10px 10px 0px;
+                    background-color: rgb(241, 241, 244);
+                    margin-bottom: 3px;
+                    padding: 11px;
+                    display: inline-block;
+                    text-align: left;
+                    &:last-child {
+                        border-bottom-left-radius: 10px;
+                    }
+                }
+            }
+
+            &.out-going {
+                padding-left: 100px;
+                @media (min-width: 560px) {
+                    padding-left: 140px;
+                }
+                .message-wrapper {
+                    text-align: right;
+                }
+                .message-text {
+                    border-radius: 10px 10px 0px;
+                    background: linear-gradient(90deg, rgb(0, 120, 212), rgb(0, 188, 242));
+                    color: #ffffff;
+                    margin-bottom: 3px;
+                    padding: 11px;
+                    display: inline-block;
+                    text-align: left;
+                    &:last-child {
+                        border-top-right-radius: 0px;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -13,7 +13,7 @@ interface RecentMessageProps {
 
 const RecentMessage: React.FunctionComponent<RecentMessageProps> = (props) => {
     return (
-        <div className={`message ${props.isSelected && 'selected'}`}>
+        <div className={`recent-message ${props.isSelected && 'selected'}`}>
             <Avatar name='HK' status={UserStatus.Online} />
             <div className='identity'>
                 <div className='name'>Hari Krishnan</div>

@@ -12,13 +12,25 @@ interface AvatarProps {
     status?: number;
 }
 
+const getStatus = (status: number | undefined) => {
+    switch (status) {
+        case UserStatus.Online:
+            return 'online';
+        case UserStatus.Away:
+            return 'away';
+        default:
+            return '';
+    }
+};
+
 const Avatar: React.FunctionComponent<AvatarProps> = (props) => {
+    const currentStatus = getStatus(props.status);
     return (
         <Fragment>
             { props.name ? (
                 <div className='avatar'>
                     {props.name}
-                    <div className={`indicator ${props.status === UserStatus.Online ? 'online' : 'away'}`}></div>
+                    { currentStatus ? <div className={`indicator ${currentStatus}`}></div> : null }
                 </div>
             ): null }
             { props.imageUrl ? <img src={props.imageUrl} /> : null}
