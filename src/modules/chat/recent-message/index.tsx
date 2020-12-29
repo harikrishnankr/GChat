@@ -9,11 +9,16 @@ interface RecentMessageProps {
     lastMessageTime?: string;
     unReadCount?: number;
     isSelected?: boolean;
+    onSelect?: () => void
 }
 
 const RecentMessage: React.FunctionComponent<RecentMessageProps> = (props) => {
+
+    const onSelect = () => {
+        props.onSelect && props.onSelect();
+    }
     return (
-        <div className={`recent-message ${props.isSelected && 'selected'}`}>
+        <div className={`recent-message ${props.isSelected && 'selected'}`} onClick={onSelect}>
             <Avatar name='HK' status={UserStatus.Online} />
             <div className='identity'>
                 <div className='name'>Hari Krishnan</div>

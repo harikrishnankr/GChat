@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AutoGrowInput from '../../../shared/components/auto-grow-input';
 import Avatar, { UserStatus } from '../../../shared/components/avatar';
 import './room.scss';
 
-const Room = () => {
+interface RoomProps {
+    goBack?: () => void
+}
+
+const Room = (props: RoomProps) => {
+
+    const [inputValue, setInputValue] = useState('');
 
     const inputUpdated = (value: string) => {
-        console.log(value);
+        setInputValue(value);
+    };
+
+    const resetInput = () => {
+        setInputValue('');
     };
 
     return (
         <div className='room-wrapper'>
             <div className='header'>
                 <div className='user-data-wrapper'>
-                    <div className='go-back'></div>
+                    <div className='go-back' onClick={() => props.goBack && props.goBack()}></div>
                     <div className='user-data'>
                         <Avatar name='HK' status={UserStatus.Online} />
                         <div className='user-name'>Hari Krishnan KR</div>
@@ -98,9 +108,9 @@ const Room = () => {
             </div>
             <div className='chat-input-wrapper'>
                 <div className='chat-input'>
-                    <AutoGrowInput onInputUpdate={inputUpdated}/>
+                    <AutoGrowInput value={inputValue} onInputUpdate={inputUpdated}/>
                 </div>
-                <div className='send-button'></div>
+                <div className='send-button' onClick={resetInput}></div>
             </div>
         </div>
     );

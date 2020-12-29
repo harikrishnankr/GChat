@@ -3,7 +3,16 @@ import Avatar, { UserStatus } from '../../../shared/components/avatar';
 import './left-pane.scss';
 import RecentMessage from '../recent-message';
 
-const LeftPane = () => {
+interface LeftPaneProps {
+    onSelect?: () => void
+}
+
+const LeftPane = (props: LeftPaneProps) => {
+
+    const onSelect = () => {
+        props.onSelect && props.onSelect();
+    };
+
     return (
         <div className='left-pane'>
             <div className='chat-header'>
@@ -19,8 +28,8 @@ const LeftPane = () => {
                 </div>
             </div>
             <div className='recent-messages'>
-                <RecentMessage isSelected={true} />
-                <RecentMessage />
+                <RecentMessage isSelected={true} onSelect={onSelect}/>
+                <RecentMessage onSelect={onSelect}/>
                 <RecentMessage />
                 <RecentMessage />
                 <RecentMessage />

@@ -2,4 +2,42 @@
     display: flex;
     height: 100%;
     width: 100%;
+    .right {
+        display: none;
+    }
+    .left {
+        width: 100%;
+    }
+    @media (min-width: 768px) {
+        .left {
+            width: 322px;
+            height: 100%;
+        }
+        .right {
+            display: block;
+            width: calc(100% - 322px);
+            height: 100%;
+        }
+    }
+    &.is-chat-view {
+        .right {
+            display: block;
+            width: 100%;
+        }
+        .left {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .left {
+                display: block;
+                width: 322px;
+                height: 100%;
+            }
+            .right {
+                display: block;
+                width: calc(100% - 322px);
+                height: 100%;
+            }
+        }
+    }
 }

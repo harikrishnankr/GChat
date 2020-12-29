@@ -1,10 +1,12 @@
 .left-pane {
-    width: 322px;
+    width: 100%;
     height: 100%;
-    border-width: 0px 1px 0px 0px;
-    border-style: solid;
-    border-color: rgb(213, 217, 222);
     background-color: rgb(241, 241, 244);
+    @media (min-width: 768px) {
+        border-width: 0px 1px 0px 0px;
+        border-style: solid;
+        border-color: rgb(213, 217, 222);
+    }
 }
 
 .chat-header {

@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CatchOutsideClick from '../outside-click';
 import './auto-grow-input.scss';
 
 interface AutoGroupProps {
-    onInputUpdate?: (value: string) => void
+    onInputUpdate?: (value: string) => void;
+    value?: string;
 }
 
 const AutoGrowInput = (props: AutoGroupProps) => {
@@ -11,6 +12,12 @@ const AutoGrowInput = (props: AutoGroupProps) => {
     const [isClicked, onAgFocus] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (!props.value) {
+            setInputValue('');
+        }
+    });
 
     function updateFocus (focus: boolean) {
         onAgFocus(focus);
@@ -29,7 +36,7 @@ const AutoGrowInput = (props: AutoGroupProps) => {
     return (
         <CatchOutsideClick className='ag-input-wrapper' outsideClick={() => updateFocus(false)} onClick={() => updateFocus(true)}>
             {(isClicked || inputValue) ? (
-                <input ref={inputRef} value={inputValue} onChange={(event) => updateInput(event.target.value)}/>
+                <input ref={inputRef} value={props.value} onChange={(event) => updateInput(event.target.value)}/>
             ) : null }
             { (!isClicked && !inputValue) ? <div className='ag-placeholder'>Type a message</div> : null }
         </CatchOutsideClick>
