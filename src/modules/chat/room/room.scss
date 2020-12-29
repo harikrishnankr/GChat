@@ -44,6 +44,7 @@
     }
     .chat-inbox {
         background-color: rgba(0, 0, 0, 0);
+        overflow: auto;
         @media (min-width: 560px) {
             height: calc(100% - 150px);
             padding: 0px 30px
@@ -69,12 +70,17 @@
                 @media (min-width: 560px) {
                     padding-right: 76px;
                 }
+                .message-wrapper {
+                    text-align: right;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
                 .message-text {
                     border-radius: 0px 10px 10px 0px;
                     background-color: rgb(241, 241, 244);
                     margin-bottom: 3px;
                     padding: 11px;
-                    display: inline-block;
                     text-align: left;
                     &:last-child {
                         border-bottom-left-radius: 10px;
@@ -89,6 +95,9 @@
                 }
                 .message-wrapper {
                     text-align: right;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
                 }
                 .message-text {
                     border-radius: 10px 10px 0px;
@@ -96,13 +105,42 @@
                     color: #ffffff;
                     margin-bottom: 3px;
                     padding: 11px;
-                    display: inline-block;
                     text-align: left;
                     &:last-child {
                         border-top-right-radius: 0px;
                     }
                 }
             }
+        }
+    }
+    .chat-input-wrapper {
+        height: 60px;
+        @media (min-width: 560px) {
+            padding: 0px 30px
+        }
+        display: flex;
+        align-items: center;
+        .chat-input {
+            background-color: #f1f1f4;
+            padding: 5px 12px 5px 2px;
+            width: calc(100% - 40px);
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .text-area {
+           width: 100%;
+           padding-left: 5px;
+        }
+        .send-button {
+            height: 30px;
+            width: 30px;
+            background: url('../../../../assets/images/send.svg') no-repeat center;
+            background-size: 90%;
+            cursor: pointer;
+            margin-left: 5px;
+            display: block;
         }
     }
 }
