@@ -5,7 +5,7 @@ module.exports = {
     entry: "./src/app.tsx",
     output: {
         filename: "./main.js",
-        publicPath: '/',
+        publicPath: '/GChat',
         path: path.resolve('./dist')
     },
     resolve: {
