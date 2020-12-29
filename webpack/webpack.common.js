@@ -6,7 +6,7 @@ module.exports = {
     output: {
         filename: "./main.js",
         publicPath: '/GChat',
-        path: path.resolve('./dist')
+        path: path.resolve('./docs')
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx', '.scss']
