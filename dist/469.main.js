@@ -1,0 +1,1 @@
+(self.webpackChunkgchat=self.webpackChunkgchat||[]).push([[469],{469:(e,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>l});var a=n(294);const l=function(){return a.createElement(a.Fragment,null,a.createElement("form",null,a.createElement("input",{name:"user_name"}),a.createElement("input",{name:"password"}),a.createElement("button",null,"Login")))}}}]);
