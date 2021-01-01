@@ -20,7 +20,8 @@ class RouteComponent extends Component<IAuthState | Readonly<Props>, {}>  {
     render() {
         return (
             <Suspense fallback={<Loader />}>
-                { ((this.props as IAuthState).authStatus === AuthStatus.LoginSuccess) ? <Redirect to="/chat" /> : ""}
+                { ((this.props as IAuthState).authStatus === AuthStatus.LoginSuccess) ? <Redirect to="/chat" /> : null }
+                { ((this.props as IAuthState).authStatus === AuthStatus.LoggedOut) ? <Redirect to="/auth" /> : null }
                 <Switch>
                     <Route exact path='/' component={ LoginComponent } />
                     <Route exact path='/auth' component={ LoginComponent } />
