@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogin } from 'react-google-login';
 import { G_AUTH_CLIENT_ID } from '../../config';
 import './login.scss';
@@ -19,7 +19,7 @@ const Login = (props: LoginProps) => {
         props.loginUser('');
     };
 
-    const { signIn } = useGoogleLogin({
+    const { signIn, loaded } = useGoogleLogin({
         onSuccess,
         onFailure,
         clientId: G_AUTH_CLIENT_ID,
@@ -30,19 +30,25 @@ const Login = (props: LoginProps) => {
     });
 
     return (
-        <div className='login-wrapper'>
-            <div>
-                <div className='logo'></div>
-                <h3>Join Our Community</h3>
-                { props.authStatus === AuthStatus.LoginError ? 'Login Error' : '' }
-                <button onClick={signIn} className='button google-button'>
-                    <div className='google-logo'></div>
-                    <span className='buttonText'>Sign in with Google</span>
-                </button>
-            </div>
-        </div>
+        <Fragment>
+            {
+                (loaded && props.authStatus !== AuthStatus.StartLogin) ? 
+                <div className='login-wrapper'>
+                    <div>
+                        <div className='logo'></div>
+                        <h3>Join Our Community</h3>
+                        { props.authStatus === AuthStatus.LoginError ? 'Login Error' : '' }
+                        <button onClick={signIn} className='button google-button'>
+                            <div className='google-logo'></div>
+                            <span className='buttonText'>Sign in with Google</span>
+                        </button>
+                    </div>
+                </div> :
+                null
+            }
+        </Fragment>
     );
-}
+};
 
 const mapStateToProps = (store: IStore): IAuthState => ( { ...store.auth });
 

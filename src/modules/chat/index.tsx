@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// import Logout from '../auth/logout';
-import './chat.scss';
 import LeftPane from './left-pane';
 import Room from './room';
+import './chat.scss';
 
 const Chat = () => {
 
@@ -16,7 +15,6 @@ const Chat = () => {
             <div className='right'>
                 <Room goBack={() => setChatView(false)}/>
             </div>
-            {/* <Logout /> */}
         </div>
     );
 };

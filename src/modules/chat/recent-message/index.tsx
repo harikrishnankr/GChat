@@ -21,12 +21,12 @@ const RecentMessage: React.FunctionComponent<RecentMessageProps> = (props) => {
         <div className={`recent-message ${props.isSelected && 'selected'}`} onClick={onSelect}>
             <Avatar name='HK' status={UserStatus.Online} />
             <div className='identity'>
-                <div className='name'>Hari Krishnan</div>
-                <div className='last-message'>Hellooo!!</div>
+                <div className='name'>{props.name}</div>
+                <div className='last-message'>{props.lastMessage}</div>
             </div>
             <div className='space-time'>
-                <div className='time'>10:34 AM</div>
-                <div className='unread-messages'>2</div>
+                <div className='time'>{props.lastMessageTime}</div>
+                { !!props.unReadCount ? <div className='unread-messages'>{props.unReadCount}</div> : null }
             </div>
         </div>
     );

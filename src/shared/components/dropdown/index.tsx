@@ -24,9 +24,9 @@ const DropDown = (props: DropDownProps) => {
         if (React.isValidElement(child)) {
             switch ((child.type as any).displayName) {
                 case 'DropDownList':
-                    return React.cloneElement(child, { showDropdown: showDropdown, closeDropDown: closeDropDown });
+                    return React.cloneElement(child, { showDropdown, closeDropDown });
                 case 'DropDownTrigger':
-                    return React.cloneElement(child, { openDropdown: openDropdown });
+                    return React.cloneElement(child, { openDropdown });
                 default: break;
             }
         }

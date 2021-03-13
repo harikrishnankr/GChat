@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { GoogleLogout } from 'react-google-login';
 import { connect } from 'react-redux';
 import { G_AUTH_CLIENT_ID } from '../../config';
@@ -18,17 +18,15 @@ const Logout = (props: LogoutProps) => {
     };
 
     return (
-        <Fragment>
-            <GoogleLogout
-                clientId={G_AUTH_CLIENT_ID}
-                buttonText="Logout"
-                onLogoutSuccess={onLogoutSuccess}
-                onFailure={onFailure}
-                render={renderProps => (
-                    <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='button-text logout'>Sign out</button>
-                )}
-            ></GoogleLogout>
-        </Fragment>
+        <GoogleLogout
+            clientId={G_AUTH_CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={onLogoutSuccess}
+            onFailure={onFailure}
+            render={renderProps => (
+                <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='button-text logout'>Sign out</button>
+            )}
+        ></GoogleLogout>
     );
 }
 
