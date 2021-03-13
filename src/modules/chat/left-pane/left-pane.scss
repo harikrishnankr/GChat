@@ -79,3 +79,19 @@
     overflow: auto;
 }
 
+.empty-recent-messages {
+    padding: 4px 8px 8px;
+    div {
+        margin-bottom: 7px;
+        color: #8a8d91;
+    }
+    a {
+        color: #0078d4;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.recent-message-loading {
+    padding: 4px 8px 8px;
+}

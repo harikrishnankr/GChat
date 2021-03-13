@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from 'react';
-import Avatar, { UserStatus } from '../../../shared/components/avatar';
 import './left-pane.scss';
 import RecentMessage from '../recent-message';
 import DropDown from '../../../shared/components/dropdown';
@@ -12,23 +11,15 @@ import { IStore } from '../../../store/types';
 import { FetchMessageDispatcher } from './types';
 import { fetchRecentMessage } from '../../../store/chat/action';
 import { IAuthState } from '../../../store/auth/types';
+import CurrentAvatar from '../../../shared/components/current-avatar'
 
 interface LeftPaneProps {
     onSelect?: () => void;
     auth: IAuthState;
     recentMessages: Array<any>;
-    fetchRecentMessage: () => any
+    fetchRecentMessage: () => any;
+    isRecentMessageLoading: boolean;
 }
-
-const getAvatarCharacters = (name: string): string => {
-    if (name) {
-        const nameList = name.split(' ');
-    
-        return `${nameList[0][0]}${nameList[1][0]}`.toUpperCase();
-    } else {
-        return '';
-    }
-};
 
 const LeftPane = (props: LeftPaneProps) => {
 
@@ -36,18 +27,19 @@ const LeftPane = (props: LeftPaneProps) => {
         props.onSelect && props.onSelect();
     };
 
-    const avatarCharacter = getAvatarCharacters(props.auth.name as string);
-
     useEffect(() => {
         props.fetchRecentMessage();
     }, []);
 
+    const triggerSearch = () => {
+
+    };
 
     return (
         <div className='left-pane'>
             <div className='chat-header'>
                 <div className='logo-wrapper'>
-                    <Avatar name={avatarCharacter} status={UserStatus.Online} />
+                    <CurrentAvatar />
                 </div>
                 <DropDown>
                     <DropDownTrigger>
@@ -63,15 +55,20 @@ const LeftPane = (props: LeftPaneProps) => {
                 </DropDown>
             </div>
             <div className='search-bar'>
-                <div className='search-box'>
+                <div className='search-box' onClick={triggerSearch}>
                     <div className='search-glass'></div>
                     <div className='placeholder'>People, groups & names</div>
                 </div>
             </div>
             <div className='recent-messages'>
-                {
+                { !props.isRecentMessageLoading ? (
                     (!props.recentMessages || !props.recentMessages.length)
-                        ? <>No recent messages</>
+                        ?(
+                            <div className='empty-recent-messages'>
+                                <div>No recent messages</div>
+                                <a onClick={triggerSearch}>Find your friends</a>
+                            </div>
+                        )
                         : (
                             props.recentMessages.map((message) => {
                                 return (
@@ -88,6 +85,7 @@ const LeftPane = (props: LeftPaneProps) => {
                                 );
                             })
                         )
+                    ) : <div className='recent-message-loading'>Fetching Recent Messages....</div>
                 }
             </div>
         </div>
@@ -95,7 +93,11 @@ const LeftPane = (props: LeftPaneProps) => {
 };
 
 const mapStateToProps = (store: IStore) => {
-    return { auth: store.auth, recentMessages: store.chat.recentMessages }
+    return {
+        auth: store.auth,
+        recentMessages: store.chat.recentMessages,
+        isRecentMessageLoading: store.chat.isRecentMessageLoading
+    }
 };
 
 const mapDispatchToProps = (dispatch: FetchMessageDispatcher) => ({

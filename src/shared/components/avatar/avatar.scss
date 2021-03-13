@@ -13,6 +13,19 @@
     color: rgb(0, 120, 212);
     font-weight: 800;
 
+    &.avatar-3 {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        .indicator {
+            bottom: 9px !important;
+            right: 2px !important;
+            width: 15px !important;
+            height: 15px !important;
+            border-radius: 10px !important;
+        }
+    }
+
     .indicator {
         position: absolute;
         border-width: 2px;

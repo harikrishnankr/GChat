@@ -23,6 +23,7 @@ export interface IAuthResponse {
     email?: string;
     name?: string;
     token?: string;
+    status?: number;
 }
 
 export interface IAuthState extends IAuthResponse {

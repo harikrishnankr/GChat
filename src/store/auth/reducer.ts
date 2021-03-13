@@ -1,3 +1,4 @@
+import { UserStatus } from '../../shared/components/avatar';
 import { IAuthActionTypes, IAuthState, START_LOGIN, LOGIN_ERROR, LOGIN_SUCCESS, AuthStatus, START_LOGOUT, LOGOUT_SUCCESS, LOGOUT_ERROR } from './types';
 
 
@@ -5,7 +6,8 @@ const initialState: IAuthState = {
     authStatus: AuthStatus.LoggedOut,
     email: '',
     name: '',
-    token: ''
+    token: '',
+    status: UserStatus.Online
 };
 
 export default (state = initialState, action: IAuthActionTypes): IAuthState => {

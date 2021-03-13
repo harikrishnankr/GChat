@@ -2,21 +2,48 @@ import React, { useState } from 'react';
 import LeftPane from './left-pane';
 import Room from './room';
 import './chat.scss';
+import CurrentAvatar from '../../shared/components/current-avatar';
+import { AvatarSize } from '../../shared/components/avatar';
+import { IStore } from '../../store/types';
+import { connect } from 'react-redux';
+import { IAuthState } from '../../store/auth/types';
 
-const Chat = () => {
+interface ChatComponentProps {
+    auth?: IAuthState;
+}
 
-    const [isChatView, setChatView] = useState(false);
+const Chat = (props: ChatComponentProps) => {
+
+    const [isAnyChatSelected, setChatView] = useState(false);
+
 
     return (
-        <div className={`chat-wrapper ${isChatView ? 'is-chat-view' : ''}`}>
+        <div className={`chat-wrapper ${isAnyChatSelected ? 'is-chat-view' : ''}`}>
             <div className='left'>
                 <LeftPane onSelect={() => setChatView(true)}/>
             </div>
             <div className='right'>
-                <Room goBack={() => setChatView(false)}/>
+                { isAnyChatSelected ?
+                    <Room goBack={() => setChatView(false)}/> : (
+                        <div className='empty-placeholder'>
+                            <div>
+                                <CurrentAvatar size={AvatarSize.Large}/>
+                            </div>
+                            <div className='message'>
+                                <div className='welcome'>Welcome!</div>
+                                <div className='name'>{props.auth ? props.auth.name : ''}</div>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );
 };
+const mapStateToProps = (store: IStore) => {
+    return {
+        auth: store.auth
+    }
+};
 
-export default Chat;
+export default connect(mapStateToProps, undefined)(Chat)

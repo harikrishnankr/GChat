@@ -40,4 +40,28 @@
             }
         }
     }
+
+    .empty-placeholder {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 100px;
+
+        .message {
+            padding-left: 11px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .welcome {
+                font-size: 30px;
+            }
+
+            .name {
+                font-size: 30px;
+                font-weight: 600;
+            }
+        }
+
+    }
 }

@@ -1,4 +1,5 @@
 import { APP_ROUTE } from '../../config';
+import { UserStatus } from '../../shared/components/avatar';
 import { removeAuth, setAuth } from '../../shared/utils/auth';
 import { postRequest } from '../../shared/utils/http';
 import { IAuthDispatchType, IAuthRequest, IAuthResponse, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT_ERROR, LOGOUT_SUCCESS, START_LOGIN, START_LOGOUT } from './types';
@@ -17,7 +18,10 @@ export const login = (token: string) => (dispatch: IAuthDispatchType) => {
             setAuth(auth.token as string);
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: auth
+                payload: {
+                    ...auth,
+                    status: UserStatus.Online
+                }
             });
         })
         .catch(() => dispatch({
