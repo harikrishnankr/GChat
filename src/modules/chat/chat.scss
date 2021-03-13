@@ -45,7 +45,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        padding-top: 100px;
+        padding-top: 130px;
 
         .message {
             padding-left: 11px;
@@ -62,6 +62,12 @@
                 font-weight: 600;
             }
         }
+    }
 
+    .email-message {
+        font-weight: 700;
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
     }
 }

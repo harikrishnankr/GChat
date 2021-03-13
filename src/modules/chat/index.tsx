@@ -25,15 +25,18 @@ const Chat = (props: ChatComponentProps) => {
             <div className='right'>
                 { isAnyChatSelected ?
                     <Room goBack={() => setChatView(false)}/> : (
-                        <div className='empty-placeholder'>
-                            <div>
-                                <CurrentAvatar size={AvatarSize.Large}/>
+                        <>
+                            <div className='empty-placeholder'>
+                                <div>
+                                    <CurrentAvatar size={AvatarSize.Large}/>
+                                </div>
+                                <div className='message'>
+                                    <div className='welcome'>Welcome!</div>
+                                    <div className='name'>{ props?.auth?.name }</div>
+                                </div>
                             </div>
-                            <div className='message'>
-                                <div className='welcome'>Welcome!</div>
-                                <div className='name'>{props.auth ? props.auth.name : ''}</div>
-                            </div>
-                        </div>
+                            <div className='email-message'>You are signed in as <i>{props?.auth?.email}</i></div>
+                        </>
                     )
                 }
             </div>
