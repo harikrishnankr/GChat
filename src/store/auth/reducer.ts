@@ -7,7 +7,8 @@ const initialState: IAuthState = {
     email: '',
     name: '',
     token: '',
-    status: UserStatus.Online
+    status: UserStatus.Online,
+    userId: ''
 };
 
 export default (state = initialState, action: IAuthActionTypes): IAuthState => {

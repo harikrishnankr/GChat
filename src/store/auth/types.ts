@@ -24,6 +24,7 @@ export interface IAuthResponse {
     name?: string;
     token?: string;
     status?: number;
+    userId?: string;
 }
 
 export interface IAuthState extends IAuthResponse {

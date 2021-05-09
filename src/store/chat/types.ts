@@ -28,11 +28,17 @@ export const ACTIONS = {
     START_RECENT_MESSAGE_FETCH: 'START_RECENT_MESSAGE_FETCH',
     SUCCESS_RECENT_MESSAGE_FETCH: 'SUCCESS_RECENT_MESSAGE_FETCH',
     ERROR_RECENT_MESSAGE_FETCH: 'SUCCESS_RECENT_MESSAGE_FETCH',
+    UPDATE_RECENT_MESSAGE: 'UPDATE_RECENT_MESSAGE'
 }
 
 export interface IStartRecentMessageFetchAction {
     type: typeof ACTIONS.START_RECENT_MESSAGE_FETCH;
     payload: boolean;
+}
+
+export interface IUpdateMessageAction {
+    type: typeof ACTIONS.UPDATE_RECENT_MESSAGE,
+    payload: IRecentMessage
 }
 
 export interface ISuccessRecentMessageFetchAction {
@@ -46,6 +52,6 @@ export interface IErrorRecentMessageFetchAction {
 }
 
 export type IChatActionTypes = IStartRecentMessageFetchAction | ISuccessRecentMessageFetchAction |
-    IErrorRecentMessageFetchAction;
+    IErrorRecentMessageFetchAction | IUpdateMessageAction;
 
 export type IChatDispatchType = (arg: IChatActionTypes) => IChatActionTypes;

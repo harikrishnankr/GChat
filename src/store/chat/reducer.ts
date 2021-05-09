@@ -27,6 +27,15 @@ export default (state = initialState, action: IChatActionTypes): IChatState => {
                     ...action.payload
                 ]
             };
+        case ACTIONS.START_RECENT_MESSAGE_FETCH:
+            return {
+                ...state,
+                isRecentMessageLoading: false,
+                recentMessages: [
+                    action.payload,
+                    ...state.recentMessages
+                ]
+            }
         default:
             return state;
     }
